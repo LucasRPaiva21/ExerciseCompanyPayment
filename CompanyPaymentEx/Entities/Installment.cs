@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace CompanyPaymentEx.Entities
 {
@@ -16,7 +17,9 @@ namespace CompanyPaymentEx.Entities
 
         public override string ToString()
         {
-            return base.ToString();
+            return DueDate.ToString("dd/MM/yyyy")
+                + " - "
+                + Amount.ToString("F2", CultureInfo.InvariantCulture);
         }
     }
 }

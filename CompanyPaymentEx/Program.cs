@@ -21,10 +21,13 @@ namespace CompanyPaymentEx
 
             Contract contract = new Contract(number, date, contractValue);
 
-            for(int i = 1; i <= nInstallments; i++)
+            ContractService contractService = new ContractService(new PaypalService());
+            contractService.ProcessContract(contract, nInstallments);
+
+            Console.WriteLine("Installments: ");
+            foreach(Installment installment in contract.Installments)
             {
-                Installment installment = new Installment(date, i);
-                contract.AddInstallment(installment);
+                Console.WriteLine(installment);
             }
 
         }
